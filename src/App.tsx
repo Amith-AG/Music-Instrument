@@ -35,15 +35,18 @@ function App() {
       className="flex flex-col gap-1 items-center"
       onKeyDown={onKeyDownHandler}
     >
-      <h1 className="text-4xl font-bold  m-5">Music Instrumental App</h1>
+      <h1 className="text-4xl font-bold  m-5 text-center">
+        Music Instrumental App
+      </h1>
       <div
         id="drum-machine"
-        className="w-1/2 h-[100vh]  flex justify-center items-center "
+        className="w-full lg:w-[70%] h-[100vh]  flex flex-col  md:flex-row justify-center items-center p-2 "
       >
-        <div className=" w-1/2 flex justify-center items-center h-1/2 border-2 border-black">
+        <div className=" w-full lg:w-1/2 flex justify-center items-center h-1/2 ">
           <div className="grid grid-cols-3 gap-2 w-fit">
             {audioFiles.map((data) => (
               <DrumPad
+                key={`drum-pad-${data.key}`}
                 src={"/" + data.location}
                 keyValue={data.key}
                 name={data.name}
@@ -55,7 +58,7 @@ function App() {
 
         <div
           id="display"
-          className="flex flex-col justify-between items-center w-1/2 h-1/2 border-2 border-l-none border-black p-2"
+          className="flex flex-col justify-between items-center w-full lg:w-1/2 h-1/2 border-2 border-black p-2 rounded-lg"
         >
           <h1 className="text-2xl font-bold font-mono w-full text-center">
             Let's Play Instruments
