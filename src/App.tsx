@@ -2,7 +2,12 @@ import "./App.css";
 import { DrumPad } from "./components/DrumPad";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { VolumeX, Volume } from "lucide-react";
-import { onClickMute, onClickUnmute } from "./redux/slice/displaySlice";
+import {
+  addDescription,
+  addIcon,
+  onClickMute,
+  onClickUnmute,
+} from "./redux/slice/displaySlice";
 import { Button } from "./components/ui/button";
 
 function App() {
@@ -26,6 +31,8 @@ function App() {
     const clip = audioFiles.find((audio) => audio.key === e.key.toUpperCase());
 
     if (!clip) return;
+    dispatch(addDescription(clip.name));
+    dispatch(addIcon(clip.icon));
     (document.getElementById(clip.key) as HTMLAudioElement)
       .play()
       .catch(console.error);
